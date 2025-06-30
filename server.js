@@ -24,4 +24,8 @@ app.use(session({secret: 'xyz567',
     cookie: { secure: process.env.NODE_ENV === 'production',},
     store: MongoStore.create(mongoose.connection), resave: false, saveUninitialized: false}));
 
+app.use(express.static(path.join(__dirname, '/client/build')));
+app.use(express.static(path.join(__dirname, '/public')));
+
 app.use('/api/auth', require('./routes/auth.routes'));
+app.use('/api', require('./routes/ads.routs'));

@@ -5,9 +5,9 @@ const imageUpload = require("../utils/imageUpload");
 const multer = require("multer");
 
 const auth = require('../controllers/auth.controller');
-const uploadAvatar = require('../middlewares/imageUploadWithErrorHandling');
+const uploadFile = require('../middlewares/imageUploadWithErrorHandling');
 
-router.post('/register', uploadAvatar, auth.register);
+router.post('/register', uploadFile('avatar'), auth.register);
 
 router.post('/login', auth.login);
 router.get('/user', authMiddleware, auth.getUser);
